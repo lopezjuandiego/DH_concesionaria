@@ -37,30 +37,40 @@ autosNuevos : function () {
 return this.autosParaLaVenta().filter(elemento => elemento.km <=100); 
 
 },
+//CON map
+listaDeVentas: function(){
+  let filtroVendido = this.autos.filter(elemento => elemento.vendido ==true);
+  return filtroVendido.map(elemento => elemento.precio)
+},
+/* lista de ventas con FOR
+listaDeVentas: function(){
+ let acumulador =[]
+ for (let i = 0; i < this.autos.length; i++){
+if (this.autos[i].vendido == true){
+ acumulador.push(this.autos[i].precio)
+}
+ } return acumulador
+} 
+};*/
+totalDeVentas : function(){
+return this.listaDeVentas().reduce((acumulador,numero)=> acumulador + numero,0)
+}
+/* },
+puedeComprar : function (auto,persona){
 
-
-listaDeVentas: 
-
-};
+ */}
 
 
 //console.log(concesionaria.buscarAuto("APL123"));
 //console.log(concesionaria.venderAuto("APL123"));
-console.log("autos en venta",concesionaria.autosParaLaVenta());
-console.log("autos 0km",concesionaria.autosNuevos());
+//console.log("autos en venta",concesionaria.autosParaLaVenta());
+//console.log("autos NUEVOS 0km",concesionaria.autosNuevos());
+//console.log("Lista de ventas",concesionaria.listaDeVentas());
+console.log("Ventas totales", concesionaria.totalDeVentas())
+
 
 /*
-PIDE: una funcion de autos nuevos.
-QUE HACE: Utilizar la funcion autos para la venta y filtrarla por km <100
-QUE DEVUELVE return autos con menos de 100km
-
-María, contenta con el trabajo que realizaron, les pide otra funcionalidad extra. 
-Resulta que a la concesionaria le suelen preguntar muy seguido cuáles de los autos para la 
-venta son 0 km. 
-Tené en cuenta que María considera que un auto 0 km es aquel que tenga un kilometraje menor a 100. 
-Vas a tener que desarrollar la funcionalidad autosNuevos.
-¿Cómo podés resolver esto reutilizando la función autosParaLaVenta?
-Para comenzar, tenés que agregar el código que escribiste en el ejercicio anterior.
-
-
+PIDE: una funcion lista de ventas.
+QUE HACE: usar la funcion autosNuevos con metodo de array
+QUE DEVUELVE una lista en ARRAY con el precio de cada auto vendido
 */
